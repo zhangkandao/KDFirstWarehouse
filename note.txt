@@ -1,0 +1,19 @@
+1.引入mybatis的jar包
+
+2.在源资源文件夹下建一个mybatis的配置文件mybatis-config.xml,在该文件内部配置环境就可以使用.
+
+
+3.写一个持久化类(pojo),作用就是为了接收数据库当中表的数据.
+
+4.创建一个mybatis的映射文件，完成将数据库当中的表映射成java中的类,这样的映射文件的名称叫做UserMapper.xml
+
+
+  如果使用的是Mapper接口的方式，在映射文件当中一定要将namespace设置为Mapper接口的目录
+  
+  
+  写一个Mapper接口，Mapper接口提供的方法的名称要和映射文件当中sql的id的属性值要相同.
+
+
+5.使用mybatis当中提供的api接口进行数据库的持久化操作
+
+    SqlSessionFactoryBuilder     SqlSessionFactory     SqlSession(等价Connection)

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace属性的取值是映射文件所在的位置 -->
+
+<!-- namespace现在必须是UserDao接口所在位置 -->
+<mapper  namespace="com.hxzy.mybatis.dao.UserDao">
+
+     <!-- 配置一条insert的sql语句 -->
+    <insert id="insertUser" parameterType="com.hxzy.mybatis.pojo.User" >
+    
+         insert  into  scott.users(id,name,age,birthday)  values(#{id},#{name},#{age},#{birthday})
+    
+    </insert>
+    
+    <!-- 配置一条删除的sql
+    
+      parameterType属性是用来配置输入参数的类型
+      
+      resultType属性是用来配置输出参数的类型
+      
+       只针对id可以随意写#{名称任意}
+    
+     -->
+    <delete id="deleteUserById" parameterType="int">
+    
+          delete  from  user  where  id = #{id}
+    
+    </delete>
+    <!-- 
+    
+       resultType属性是用来配置输出参数的类型 ,一定要保证User类的属性名和查询结果当中的列的名称一致
+     -->
+    <select id="findUserById"  parameterType="int" resultType="com.hxzy.mybatis.pojo.User">
+    
+    
+        select  id,name,age,birthday,my_sal from  users where id=#{id}
+    
+    </select>
+    
+    <!-- 查询到多个实体，resultType设置是结果当中的泛型类型 -->
+    <select id="findUsers"   resultType="com.hxzy.mybatis.pojo.User">
+    
+    
+        select  *  from  user 
+    
+    </select>
+    
+    
+
+
+
+</mapper>  
+  

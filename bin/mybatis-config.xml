@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+         <!-- 引入外部属性文件  -->
+         <properties resource="oracle.properties">
+                
+         
+         </properties>
+         
+         <!-- 设置驼峰命名自动映射 -->
+        <settings>
+        
+             <setting name="useColumnLabel" value="false"/>
+             <setting name="mapUnderscoreToCamelCase" value="true"/>
+        
+        </settings>
+
+
+
+
+       <!-- 配置数据源
+       
+          default属性配置运行环境的类型  一个取值是work   另一个取值是development
+          
+          work是工作环境 development是开发环境,  开发环境会多打印的一些运行的日志
+       
+        -->
+       <environments default="development">
+            <!-- id属性一定要和default属性的取值保持一致 -->
+       
+             <environment id="development">
+             
+                    <!-- 事务管理  type属性是事务管理的类型 jdbc是的事务 -->
+                    <transactionManager type="JDBC"></transactionManager>
+                    <!--  数据源的类型 POOLED就是连接池的数据源类型 -->
+                    <dataSource type="POOLED">
+                    
+                        <property name="driver" value="${driver}"/>
+                        <property name="url" value="${url}"/>
+                        <property name="username" value="${name}"/>
+                        <property name="password" value="${password}"/>
+
+                    
+                    
+                    </dataSource>
+             
+             
+             
+             
+             </environment>
+       
+       
+       
+       
+       
+       </environments>
+       
+       <!-- 引入mapper映射文件 -->
+       
+       <mappers>
+       
+                 <mapper resource="com/hxzy/mybatis/dao/UserMapper.xml"/>
+       
+       </mappers>
+
+
+
+
+
+
+
+</configuration>  
+  
+  
